@@ -9,7 +9,6 @@ const App = () => {
     axios.get("http://localhost:3001/taxonomia").then((response)=>{
       console.log(response.data)
       setData(response.data)
-      console.log("alou")
     })
   },[])
 
