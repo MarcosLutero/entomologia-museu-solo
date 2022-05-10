@@ -3,20 +3,78 @@ import axios from "axios";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminHomePage from "./Components/AdminHomePage/AdminHomePage";
 import HomePage from "./Components/HomePage/HomePage";
+import CuriosidadesPage from "./Components/CuriosidadesPage/CuriosidadesPage";
+import InsetoDetails from "./Components/InsetoDetails/InsetoDetails";
+import NavMain from "./Components/NavMain/NavMain";
+import LoginPage from "./Components/LoginPage/LoginPage";
 
 const App = () => {
-  useEffect(()=> {
-    axios.get("http://localhost:3001/taxonomia").then((response)=>{
-      console.log(response.data)
-      setData(response.data)
-    })
-  },[])
+  useEffect(() => {
+    axios.get("http://localhost:3001/taxonomia").then((response) => {
+      console.log(response.data);
+      setData(response.data);
+    });
+  }, []);
 
   // value from user
   const [inputValue, setInputValue] = useState("");
 
   //data from backend
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      nomeVulgar: "Louva Deus",
+      abdomen: "abdomen louva Deus",
+      asa: "asa louva Deus",
+      perna: "perna louva Deus",
+      aparelhoBucal: "aparelho bucal louva Deus",
+      antena: "antena louva Deus",
+      metamorfose: "metamorfose louva Deus",
+      comportamento: "comportamento louva Deus",
+      habitat: "habitat louva Deus",
+      filo: "filo louva Deus",
+      classe: "Insecta louva Deus",
+      ordem: "ordem louva Deus",
+      familia: "familia louva Deus",
+      genero: "genero louva Deus",
+      curiosidade: "é um inseto que curte louvar a Deus",
+    },
+    {
+      nomeVulgar: "Besourinho",
+      abdomen: "abdomen Besourinho",
+      asa: "asa Besourinho",
+      perna: "perna Besourinho",
+      aparelhoBucal: "aparelho bucal Besourinho",
+      antena: "antena Besourinho",
+      metamorfose: "metamorfose Besourinho",
+      comportamento: "comportamento Besourinho",
+      habitat: "habitat Besourinho",
+      filo: "filo Besourinho",
+      classe: "Insecta Besourinho",
+      ordem: "ordem Besourinho",
+      familia: "familia Besourinho",
+      genero: "genero Besourinho",
+      curiosidade:
+        "inseto de boa com a vida que curte batalhar com outros insetos",
+    },
+    {
+      nomeVulgar: "Cavalo do Cao",
+      abdomen: "abdomen Cavalo do Cao",
+      asa: "asa Cavalo do Cao",
+      perna: "perna Cavalo do Cao",
+      aparelhoBucal: "aparelho bucal Cavalo do Cao",
+      antena: "antena Cavalo do Cao",
+      metamorfose: "metamorfose Cavalo do Cao",
+      comportamento: "comportamento Cavalo do Cao",
+      habitat: "habitat Cavalo do Cao",
+      filo: "filo Cavalo do Cao",
+      classe: "Insecta Cavalo do Cao",
+      ordem: "ordem Cavalo do Cao",
+      familia: "familia Cavalo do Cao",
+      genero: "genero Cavalo do Cao",
+      curiosidade:
+        "inseto desgraçado, não é atoa que o nome é cavalo do cão, capaz de matar um boi",
+    },
+  ]);
 
   //function for make a request for backend
   // const getData = () => {
@@ -52,10 +110,6 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {data.map((item, key) =>{
-        return <div key={key} >{item.nome}</div>
-      })}
-
       <Routes>
         <Route
           path="/"
@@ -69,45 +123,25 @@ const App = () => {
             />
           }
         />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/admin" element={<AdminHomePage />} />
         <Route
-          path="/login"
+          path="/curiosidades"
+          element={<CuriosidadesPage data={data} />}
+        />
+        <Route
+          path="*"
           element={
-            <div className="card text-white bg-dark mb-3 w-auto position-absolute mt-4 top-0 start-50 translate-middle-x">
-              <form className="w-100 p-3">
-                <div className="mb-3">
-                  <label htmlFor="exampleInputEmail1" className="form-label">
-                    Usuário
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                  />
-                  <div id="emailHelp" className="form-text">
-                    Insira seu usuário para acessar a página do admin
-                  </div>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="exampleInputPassword1" className="form-label">
-                    Senha
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="exampleInputPassword1"
-                  />
-                </div>
-                <div className="d-flex justify-content-center">
-                  <button type="submit" className="btn btn-success">
-                    Entrar
-                  </button>
-                </div>
-              </form>
-            </div>
+            <>
+              {" "}
+              <h1>Página não encontrada</h1>{" "}
+            </>
           }
         />
-        <Route path="/admin" element={<AdminHomePage />} />
+        <Route
+          path="/:nomeVulgarInseto"
+          element={<InsetoDetails data={data} />}
+        />
       </Routes>
     </BrowserRouter>
   );
