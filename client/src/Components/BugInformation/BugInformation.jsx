@@ -1,5 +1,5 @@
 import React from "react";
-import BugPic from "../../assets/img/besourinho.jpg";
+import BugPic from "../../assets/img/louvaDeus.jpg";
 
 const BugInformation = () => {
   return (
