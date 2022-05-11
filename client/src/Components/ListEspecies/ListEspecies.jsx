@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import bug from "../../assets/img/louvaDeus.jpg";
+import bug from "../../assets/img/louvaDeusGrande.jpeg";
 
 
 const ListEspecies = ({data}) => {

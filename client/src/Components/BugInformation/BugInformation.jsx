@@ -1,5 +1,5 @@
 import React from "react";
-import BugPic from "../../assets/img/louvaDeus.jpg";
+import BugPic from "../../assets/img/vespa.jpg";
 import NavMain from "../NavMain/NavMain";
 
 const BugInformation = ({dataInsect}) => {
