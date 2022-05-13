@@ -5,56 +5,51 @@ import axios from "axios";
 
 import "./FormAddCharacteristics.css";
 
-const FormAddCharacteristics = ({ content }) => {
+const FormAddCharacteristics = ({ finalPath, field, title}) => {
   const initialValues = {
-    nome: "",
-    TaxonomiaId: "",
+    [field]: "",
   };
 
   const [valores, setValores] = useState([]);
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/taxonomia/options").then((res) => {
-      setValores(res.data);
-    });
-  }, []);
 
-  const validationSchema = Yup.object().shape({
-    nome: Yup.string().required("Esse valor não pode ser vazio!"),
-    TaxonomiaId: Yup.string(), //aqui pode ser um option
-  });
+  // useEffect(() => {
+  //   axios.get("http://localhost:3001/taxonomia/options").then((res) => {
+  //     setValores(res.data);
+  //   });
+  // }, []);
+
+  let validationSchemaConfig = {
+    //[field]: Yup.string().required("Esse valor não pode ser vazio!"),    
+  }
+
+
+  const validationSchema = Yup.object().shape(validationSchemaConfig);
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/taxonomia", data).then((response) => {
+    console.log("- - - - - - - -")
+    console.log(data)
+    console.log("- - - - - - - -")
+    axios.post(`https://api-museu-entomologiaufra.herokuapp.com/${finalPath}`, data).then((response) => {
       console.log(response);
     });
   };
 
   return (
     <>
-      <h1>{content}</h1>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        {() => (
+        {(formik) => (          
           <Form>
-            <label className="mb-1" >Nome da Taxonomia</label>
-            <ErrorMessage name="nome" component="span" />
-            <Field className="form-control mb-3" name="nome" placeholder="Ex: Reino" />
-            <label className="mb-1">Nome do Pai</label>
-            <ErrorMessage name="TaxonomiaId" component="span" />
+            {console.log(formik)}
+            <label className="mb-1" >Nome {title}</label>
+            <br />
 
-            <Field className='form-select mb-3' as="select" name="TaxonomiaId">
-              {valores.map((value, key) => {
-                return (
-                  <option key={key} value={value.value.toString()}>
-                    {value.label}
-                  </option>
-                );
-              })}
-            </Field>
+            <Field className="form-control mb-3" name={field} placeholder="Ex: Séssil..." />
+            
             <div className="modal-footer">
                 <button
                   type="button"
@@ -67,7 +62,6 @@ const FormAddCharacteristics = ({ content }) => {
                   Salvar
                 </button>
               </div>
-            {/* <button className="form-button" type="submit">Adicionar/Editar</button> */}
           </Form>
         )}
       </Formik>
@@ -76,3 +70,17 @@ const FormAddCharacteristics = ({ content }) => {
 };
 
 export default FormAddCharacteristics;
+
+// field with option
+{/* <label className="mb-1">Nome do Pai</label>
+            <ErrorMessage name="TaxonomiaId" component="span" />
+
+            <Field className='form-select mb-3' as="select" name="TaxonomiaId">
+              {valores.map((value, key) => {
+                return (
+                  <option key={key} value={value.value.toString()}>
+                    {value.label}
+                  </option>
+                );
+              })}
+            </Field> */}
