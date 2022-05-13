@@ -21,7 +21,7 @@ const ListEspecies = ({data}) => {
               navigate(`/${inseto.nomeVulgar}`)
             }}>
             <div className="card">
-              <img src={bug} className="card-img-top" alt="imagem do inseto" title="inseto"/>
+              <img src={bug} className="card-img-top" alt="imagem do inseto" title={inseto.nomeVulgar}/>
               <div className="card-body">
                 <h5 className="card-title"><b>{inseto.nomeVulgar}</b></h5>
                 <p className="card-text">
