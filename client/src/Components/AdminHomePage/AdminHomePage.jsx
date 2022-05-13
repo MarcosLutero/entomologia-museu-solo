@@ -45,19 +45,22 @@ const AdminHomePage = () => {
       </nav>
 
       <div className="container bg-light d-flex flex-column justify-content-center w-25 mt-5">
-        <h3 className="text-center mt-3 mb-4">Clique na opção desejada</h3>
+        <h3 className="text-center mt-3 mb-4">
+          Adicionar Característica Morfológica
+        </h3>
 
+        {/* ABDOMEN FORM WORKING */}
         <button
           type="button"
           className="btn btn-outline-primary w-auto mx-auto mb-3"
           data-bs-toggle="modal"
-          data-bs-target="#adicionar-classe"
+          data-bs-target="#adicionar-abdomen"
         >
-          Adicionar Classe
+          Adicionar Abdomen
         </button>
         <div
           className="modal fade"
-          id="adicionar-classe"
+          id="adicionar-abdomen"
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
@@ -81,7 +84,7 @@ const AdminHomePage = () => {
                       aria-controls="pills-home"
                       aria-selected="true"
                     >
-                      Adicionar Taxonomia
+                      Adicionar Abdomen
                     </button>
                   </li>
                   <li className="nav-item" role="presentation">
@@ -106,7 +109,7 @@ const AdminHomePage = () => {
                     role="tabpanel"
                     aria-labelledby="pills-home-tab"
                   >
-                    <FormAddCharacteristics/>
+                    <FormAddCharacteristics  finalPath={"abdomens"} field={"nome_abdomen"} title={"Abdomen"}/>
                   </div>
                   <div
                     className="tab-pane fade"
@@ -114,7 +117,7 @@ const AdminHomePage = () => {
                     role="tabpanel"
                     aria-labelledby="pills-profile-tab"
                   >
-                    <FormAddCharacteristics/>
+                    <FormAddCharacteristics />
                   </div>
                 </div>
               </div>
@@ -122,17 +125,18 @@ const AdminHomePage = () => {
           </div>
         </div>
 
+        {/* Antenas                 */}
         <button
           type="button"
           className="btn btn-outline-primary w-auto mx-auto mb-3"
           data-bs-toggle="modal"
-          data-bs-target="#adicionar-familia"
+          data-bs-target="#adicionar-antena"
         >
-          Adicionar Família
+          Adicionar Antena
         </button>
         <div
           className="modal fade"
-          id="adicionar-familia"
+          id="adicionar-antena"
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
@@ -141,7 +145,7 @@ const AdminHomePage = () => {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
-                  Adicionar Família
+                  Adicionar Antena
                 </h5>
                 <button
                   type="button"
@@ -151,35 +155,25 @@ const AdminHomePage = () => {
                 ></button>
               </div>
               <div className="modal-body">
-                <FormAddCharacteristics content={"testando"} />
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Fechar
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Salvar
-                </button>
+                <FormAddCharacteristics finalPath={"antenas"} field={"nome_antena"} title={"Antena"}/>
               </div>
             </div>
           </div>
         </div>
 
+
+          {/* Adicionar Aparelho Bucal */}
         <button
           type="button"
-          className="btn btn-outline-success w-auto mx-auto mb-5"
+          className="btn btn-outline-primary w-auto mx-auto mb-3"
           data-bs-toggle="modal"
-          data-bs-target="#adicionar-inseto"
+          data-bs-target="#adicionar-aparelho-bucal"
         >
-          - - - - - Adicionar Inseto - - - - -
+          Adicionar Aparelho Bucal
         </button>
         <div
           className="modal fade"
-          id="adicionar-inseto"
+          id="adicionar-aparelho-bucal"
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
@@ -188,7 +182,7 @@ const AdminHomePage = () => {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
-                  Adicionar Inseto
+                  Adicionar Aparelho Bucal
                 </h5>
                 <button
                   type="button"
@@ -200,17 +194,80 @@ const AdminHomePage = () => {
               <div className="modal-body">
                 <FormAddCharacteristics content={"content second Button"} />
               </div>
-              <div className="modal-footer">
+            </div>
+          </div>
+        </div>
+
+
+        {/* Adicionar Asa */}
+
+        <button
+          type="button"
+          className="btn btn-outline-primary w-auto mx-auto mb-3"
+          data-bs-toggle="modal"
+          data-bs-target="#adicionar-asa"
+        >
+          Adicionar Asa
+        </button>
+        <div
+          className="modal fade"
+          id="adicionar-asa"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Adicionar Asa
+                </h5>
                 <button
                   type="button"
-                  className="btn btn-secondary"
+                  className="btn-close"
                   data-bs-dismiss="modal"
-                >
-                  Fechar
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Salvar
-                </button>
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <FormAddCharacteristics content={"content second Button"} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+                {/* Perna */}
+
+        <button
+          type="button"
+          className="btn btn-outline-primary w-auto mx-auto mb-3"
+          data-bs-toggle="modal"
+          data-bs-target="#adicionar-perna"
+        >
+          Adicionar Perna
+        </button>
+        <div
+          className="modal fade"
+          id="adicionar-perna"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Adicionar Perna
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <FormAddCharacteristics content={"Adicionar Perna"} />
               </div>
             </div>
           </div>
