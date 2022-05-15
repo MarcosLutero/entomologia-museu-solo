@@ -10,7 +10,7 @@ const NavMain = () => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid p-3">
           <img src={Logo} width="50px" height="50px" alt="Logo da Ufra" />
-          <a className="navbar-brand ms-2" href="#navbarNavAltMarkup">
+          <a className="navbar-brand ms-2" href="/">
             Museu de Entomologia
           </a>
           <button
