@@ -48,7 +48,9 @@ const AdminHomePage = () => {
                   aria-labelledby="navbarDropdownMenuLink"
                 >
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" onClick={()=>{
+                      navigate(`/filo`)
+                    }}>
                       Filo
                     </a>
                   </li>
