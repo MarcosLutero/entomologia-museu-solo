@@ -7,7 +7,7 @@ const NavMain = () => {
   
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid p-3">
           <img src={Logo} width="50px" height="50px" alt="Logo da Ufra" />
           <a className="navbar-brand ms-2" href="#navbarNavAltMarkup">
@@ -29,17 +29,17 @@ const NavMain = () => {
             id="navbarNavAltMarkup"
           >
             <div className="navbar-nav">
-              <button type="button" className="btn btn-outline-light" onClick={() => {
+              <button type="button" className="btn btn-outline-dark" onClick={() => {
                 navigate("/")
               }}>
                 Home
               </button>
-              <button type="button" className="btn btn-outline-light ms-3" onClick={() => {
+              <button type="button" className="btn btn-outline-dark ms-3" onClick={() => {
                 navigate("/login")
               }}>
                 Login
               </button>
-              <button type="button" className="btn btn-outline-light ms-3" onClick={() => {
+              <button type="button" className="btn btn-outline-dark ms-3" onClick={() => {
                 navigate("/curiosidades")
               }}>
                 Curiosidades

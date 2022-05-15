@@ -9,7 +9,7 @@ const LoginPage = () => {
     
     return ( <>
         <NavMain/>
-        <div className="card text-white bg-dark mb-3 w-auto position-absolute mt-4 top-25 start-50 translate-middle-x">
+        <div className="card bg-light mb-3 w-auto position-absolute mt-4 top-25 start-50 translate-middle-x">
               <form className="w-100 p-3">
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
