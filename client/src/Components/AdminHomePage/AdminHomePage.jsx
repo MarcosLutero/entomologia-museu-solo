@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/img/Brasao_ufra.png";
 import FormAddCharacteristics from "../FormAddCharacteristics/FormAddCharacteristics";
 
 const AdminHomePage = () => {
   const navigate = useNavigate();
+
+  const [characteristcsStatus, setCharacteristcsStatus] = useState("")
+
+  const teste = (value) => {
+    setCharacteristcsStatus(value)
+    switch (characteristcsStatus) {
+      case "filo":
+        console.log("filo")
+        break;
+      case "classe":
+        console.log("classe")
+        break;
+      case "classe":
+        console.log("ordem")
+        break;
+      case "classe":
+        console.log("familia")
+        break;
+      default:
+        console.log("padrao")
+        break;
+    }
+  }
 
   return (
     <>
@@ -28,7 +51,7 @@ const AdminHomePage = () => {
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/admin">
+                <a className="nav-link" aria-current="page" href="/admin">
                   Home
                 </a>
               </li>
@@ -49,33 +72,48 @@ const AdminHomePage = () => {
                 >
                   <li>
                     <a className="dropdown-item" onClick={()=>{
-                      navigate(`/filo`)
+                      teste("filo")
+
                     }}>
                       Filo
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" onClick={()=>{
+                      teste("classe")
+                    }}>
                       Classe
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" onClick={()=>{
+                      setCharacteristcsStatus("ordem")
+                      teste()
+                    }}>
                       Ordem
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" onClick={()=>{
+                      setCharacteristcsStatus("familia")
+                      teste()
+                    }}>
                       Familia
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" onClick={()=>{
+                      setCharacteristcsStatus("genero")
+                      teste()
+                    }}>
                       Gênero
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" onClick={()=>{
+                      setCharacteristcsStatus("especie")
+                      teste()
+                    }}>
                       Espécie
                     </a>
                   </li>
@@ -176,6 +214,9 @@ const AdminHomePage = () => {
           </div>
         </div>
       </nav>
+
+     
+
     </>
   );
 };
