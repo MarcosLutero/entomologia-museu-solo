@@ -6,29 +6,39 @@ import FormAddCharacteristics from "../FormAddCharacteristics/FormAddCharacteris
 const AdminHomePage = () => {
   const navigate = useNavigate();
 
+  // let teste = ""
+
   const [characteristcsStatus, setCharacteristcsStatus] = useState("")
 
-  const teste = (value) => {
-    setCharacteristcsStatus(value)
-    switch (characteristcsStatus) {
-      case "filo":
-        console.log("filo")
-        break;
-      case "classe":
-        console.log("classe")
-        break;
-      case "classe":
-        console.log("ordem")
-        break;
-      case "classe":
-        console.log("familia")
-        break;
-      default:
-        console.log("padrao")
-        break;
+  // const changeComponent = async (value) => {
+  //   // await setCharacteristcsStatus(value)
+  //   teste = value
+  //   // console.log(value)
+  //   if(teste == "filo"){
+  //     console.log("filo")
+  //   }else if (teste == "classe"){
+  //     console.log("classe")
+  //   }else if (teste == "ordem"){
+  //     console.log("ordem")
+  //   }else {
+  //     console.log("não pegou nada")
+  //   }
+  // }
+
+  const showRightComponent = () => {
+    console.log(characteristcsStatus)
+    if(characteristcsStatus == "filo"){
+      return <h1 className="text-white">FILO CARALHO</h1>
+     
+    }else if (characteristcsStatus == "classe"){
+      return <h1 className="text-white" >CLASSE CARALHO</h1>
+    }else if (characteristcsStatus == "ordem"){
+      return <h1 className="text-white" >ORDEM CARALHO</h1>
+    }else {
+      return <h1 className="text-white" ></h1>
     }
   }
-
+  
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -58,7 +68,6 @@ const AdminHomePage = () => {
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
-                  href="#"
                   id="navbarDropdownMenuLink"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -72,15 +81,15 @@ const AdminHomePage = () => {
                 >
                   <li>
                     <a className="dropdown-item" onClick={()=>{
-                      teste("filo")
-
+                      setCharacteristcsStatus("filo")
                     }}>
                       Filo
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" onClick={()=>{
-                      teste("classe")
+                      setCharacteristcsStatus("classe")
+                      // changeComponent("classe")
                     }}>
                       Classe
                     </a>
@@ -88,7 +97,7 @@ const AdminHomePage = () => {
                   <li>
                     <a className="dropdown-item" onClick={()=>{
                       setCharacteristcsStatus("ordem")
-                      teste()
+                      // changeComponent("ordem")
                     }}>
                       Ordem
                     </a>
@@ -96,7 +105,7 @@ const AdminHomePage = () => {
                   <li>
                     <a className="dropdown-item" onClick={()=>{
                       setCharacteristcsStatus("familia")
-                      teste()
+                      // changeComponent("família")
                     }}>
                       Familia
                     </a>
@@ -104,7 +113,7 @@ const AdminHomePage = () => {
                   <li>
                     <a className="dropdown-item" onClick={()=>{
                       setCharacteristcsStatus("genero")
-                      teste()
+                      // changeComponent("genero")
                     }}>
                       Gênero
                     </a>
@@ -112,7 +121,7 @@ const AdminHomePage = () => {
                   <li>
                     <a className="dropdown-item" onClick={()=>{
                       setCharacteristcsStatus("especie")
-                      teste()
+                      // changeComponent("especie")
                     }}>
                       Espécie
                     </a>
@@ -215,7 +224,7 @@ const AdminHomePage = () => {
         </div>
       </nav>
 
-     
+      {showRightComponent()}
 
     </>
   );
