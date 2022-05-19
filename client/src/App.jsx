@@ -131,14 +131,14 @@ const App = () => {
           }
         />
         {/* problem in the routes */}
-        {/* <Route
+        <Route
           path="/:nomeVulgarInseto"
           element={<InsetoDetails data={data} />}
-        /> */}
-        <Route
+        />
+        {/* <Route
           path="/:characteristPath"
           element={<CharacteristcPage />}
-        />
+        /> */}
       </Routes>
     </BrowserRouter>
   );
