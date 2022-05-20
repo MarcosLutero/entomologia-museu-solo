@@ -1,46 +1,50 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/img/Brasao_ufra.png";
 import FormAddCharacteristics from "../FormAddCharacteristics/FormAddCharacteristics";
+import HandleCharacteristcsPage from "../HandleCharacteristcsPage/HandleCharacteristcsPage";
 
 const AdminHomePage = () => {
   const navigate = useNavigate();
 
-  // let teste = ""
+  useEffect(()=>{
+    axios.get("https://api-museu-entomologiaufra.herokuapp.com/filos").then((result)=>{
+      setTesteData(result.data)
+      console.log(result.data)
+    })
+  },[])
+
+  const [testeData, setTesteData] = useState([])
 
   const [characteristcsStatus, setCharacteristcsStatus] = useState("")
 
-  // const changeComponent = async (value) => {
-  //   // await setCharacteristcsStatus(value)
-  //   teste = value
-  //   // console.log(value)
-  //   if(teste == "filo"){
-  //     console.log("filo")
-  //   }else if (teste == "classe"){
-  //     console.log("classe")
-  //   }else if (teste == "ordem"){
-  //     console.log("ordem")
-  //   }else {
-  //     console.log("não pegou nada")
-  //   }
-  // }
-
   const showRightComponent = () => {
-    console.log(characteristcsStatus)
     if(characteristcsStatus == "filo"){
-      return <h1 className="text-white">FILO CARALHO</h1>
-     
+      return < HandleCharacteristcsPage finalPath={"filos"} field={"nome"} title={"filo"}/>
     }else if (characteristcsStatus == "classe"){
-      return <h1 className="text-white" >CLASSE CARALHO</h1>
+      return < HandleCharacteristcsPage />
     }else if (characteristcsStatus == "ordem"){
       return <h1 className="text-white" >ORDEM CARALHO</h1>
-    }else {
+    }else if (characteristcsStatus == "familia"){
+      return <h1 className="text-white" >FAMILIA CARALHO</h1>
+    }else if (characteristcsStatus == "genero"){
+      return <h1 className="text-white" >GENERO CARALHO</h1>
+    }else if (characteristcsStatus == "especie"){
+      return <h1 className="text-white" >ESPECIE CARALHO</h1>
+    }
+    else {
       return <h1 className="text-white" ></h1>
     }
   }
   
   return (
     <>
+      {testeData.map((element, index) => {
+        return (
+          <h1 className="text-white" key={index} >{element.nome}</h1>
+        )
+      })}
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <img src={Logo} width="50px" height="50px" alt="Logo da Ufra" />
@@ -89,7 +93,6 @@ const AdminHomePage = () => {
                   <li>
                     <a className="dropdown-item" onClick={()=>{
                       setCharacteristcsStatus("classe")
-                      // changeComponent("classe")
                     }}>
                       Classe
                     </a>
@@ -97,7 +100,6 @@ const AdminHomePage = () => {
                   <li>
                     <a className="dropdown-item" onClick={()=>{
                       setCharacteristcsStatus("ordem")
-                      // changeComponent("ordem")
                     }}>
                       Ordem
                     </a>
@@ -105,7 +107,6 @@ const AdminHomePage = () => {
                   <li>
                     <a className="dropdown-item" onClick={()=>{
                       setCharacteristcsStatus("familia")
-                      // changeComponent("família")
                     }}>
                       Familia
                     </a>
@@ -113,7 +114,6 @@ const AdminHomePage = () => {
                   <li>
                     <a className="dropdown-item" onClick={()=>{
                       setCharacteristcsStatus("genero")
-                      // changeComponent("genero")
                     }}>
                       Gênero
                     </a>
@@ -121,7 +121,6 @@ const AdminHomePage = () => {
                   <li>
                     <a className="dropdown-item" onClick={()=>{
                       setCharacteristcsStatus("especie")
-                      // changeComponent("especie")
                     }}>
                       Espécie
                     </a>
